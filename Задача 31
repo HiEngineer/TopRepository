@@ -1,0 +1,6 @@
+sum = 200
+combination = [1] + [0] * sum
+for penny in [1, 2, 5, 10, 20, 50, 100, 200]:
+    for i in range(len(combination) - penny):
+         combination[i + penny] += combination[i]
+print(str(combination[-1]))
