@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+
+namespace Task23
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+            var sum = 0;
+            var list = new List<int>();
+            var arr = new bool[28124];
+            for (var i = 12; i <= 28123; i++)
+            {
+                int count = 0;
+                while (i/2 >= count)
+                {
+                    count++;
+                    if (i % count == 0) sum += count;
+                }
+                if (i < sum) list.Add(i);
+                sum = 0;
+            }
+            for (var n = 0; n < list.Count; n++)
+            {
+                for (var m = 0; m < list.Count; m++)
+                {
+                    if (list[n] + list[m] <= 28123)
+                        arr[list[n] + list[m]] = true;
+                }
+            }
+            sum = 0;
+            for (var i = 1; i <= 28123; i++)
+                if (!arr[i])
+                    sum += i;
+            Console.WriteLine(sum);
+            Console.ReadKey();
+        }
+    }
+}
